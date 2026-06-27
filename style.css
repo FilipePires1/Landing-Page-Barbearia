@@ -12,6 +12,8 @@
     --gold-light: #e0c78a;
     --white: #f5f5f5;
     --muted: #888888;
+    --silver: #c0c0c0;
+    --silver-light: #e8e8e8;
 }
 
 html {
@@ -20,8 +22,8 @@ html {
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--black);
-    color: var(--white);
+    background-color: #ffffff;
+    color: var(--black);
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -36,15 +38,15 @@ nav {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.95), transparent);
     transition: all 0.3s ease;
 }
 
 nav.scrolled {
-    background: rgba(10,10,10,0.95);
+    background: rgba(255,255,255,0.98);
     backdrop-filter: blur(10px);
     padding: 15px 5%;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
 }
 
 .logo {
@@ -57,7 +59,7 @@ nav.scrolled {
 }
 
 .logo span {
-    color: var(--white);
+    color: var(--black);
 }
 
 .nav-links {
@@ -67,7 +69,7 @@ nav.scrolled {
 }
 
 .nav-links a {
-    color: var(--white);
+    color: var(--black);
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 500;
@@ -119,7 +121,12 @@ nav.scrolled {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(135deg, rgba(10,10,10,0.85), rgba(10,10,10,0.7)), url('/mnt/agents/upload/IMG_9477.JPG.jpeg');
+    width: 100vw;
+    min-height: 100vh;
+    min-width: 100vw;
+    background: 
+        linear-gradient(135deg, rgba(255,255,255,0.3), rgba(240,240,240,0.2)),
+        linear-gradient(to bottom, #ffffff 0%, #f8f8f8 50%, #f0f0f0 100%);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -127,6 +134,7 @@ nav.scrolled {
     justify-content: center;
     text-align: center;
     position: relative;
+    overflow: hidden;
 }
 
 .hero::before {
@@ -134,9 +142,40 @@ nav.scrolled {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 20% 30%, rgba(192,192,192,0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(160,160,160,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(200,200,200,0.1) 0%, transparent 60%);
+    animation: silverShimmer 8s ease-in-out infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(10,10,10,0.4) 100%);
+    background: 
+        linear-gradient(180deg, 
+            rgba(255,255,255,0) 0%, 
+            rgba(240,240,240,0.3) 50%, 
+            rgba(220,220,220,0.2) 100%);
+    pointer-events: none;
+}
+
+@keyframes silverShimmer {
+    0%, 100% {
+        opacity: 1;
+    }
+    33% {
+        opacity: 0.8;
+    }
+    66% {
+        opacity: 0.9;
+    }
 }
 
 .hero-content {
@@ -151,8 +190,8 @@ nav.scrolled {
     width: 120px;
     height: 120px;
     margin: 0 auto 30px;
-    background: url('/mnt/agents/upload/image.png') center/contain no-repeat;
-    filter: brightness(0) invert(1);
+    background: url('logo dvz.png') center/contain no-repeat;
+    filter: brightness(0);
 }
 
 .hero h1 {
@@ -162,7 +201,7 @@ nav.scrolled {
     letter-spacing: 8px;
     text-transform: uppercase;
     margin-bottom: 15px;
-    color: var(--white);
+    color: var(--black);
 }
 
 .hero h1 span {
@@ -205,7 +244,7 @@ nav.scrolled {
     background: transparent;
     color: var(--gold);
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+    box-shadow: 0 10px 30px rgba(201, 169, 98, 0.2);
 }
 
 .scroll-indicator {
@@ -214,6 +253,7 @@ nav.scrolled {
     left: 50%;
     transform: translateX(-50%);
     animation: bounce 2s infinite;
+    z-index: 2;
 }
 
 .scroll-indicator::before {
@@ -240,7 +280,7 @@ section {
     font-weight: 700;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--black);
     margin-bottom: 15px;
 }
 
@@ -264,7 +304,7 @@ section {
 
 /* About Section */
 .about {
-    background: var(--dark);
+    background: #fafafa;
 }
 
 .about-grid {
@@ -348,13 +388,14 @@ section {
 }
 
 .service-card {
-    background: var(--gray);
-    border: 1px solid rgba(201, 169, 98, 0.1);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     padding: 40px;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
 
 .service-card::before {
@@ -370,9 +411,9 @@ section {
 }
 
 .service-card:hover {
-    border-color: var(--gold);
+    border-color: rgba(201, 169, 98, 0.3);
     transform: translateY(-5px);
-    box-shadow: 0 10px 40px rgba(201, 169, 98, 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
 .service-card:hover::before {
@@ -388,7 +429,7 @@ section {
 .service-card h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.3rem;
-    color: var(--white);
+    color: var(--black);
     margin-bottom: 10px;
     letter-spacing: 2px;
 }
@@ -409,7 +450,7 @@ section {
 
 /* Gallery Section */
 .gallery {
-    background: var(--dark);
+    background: #fafafa;
 }
 
 .gallery-grid {
@@ -444,7 +485,7 @@ section {
     left: 0;
     right: 0;
     padding: 30px 20px;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    background: linear-gradient(to top, rgba(255,255,255,0.95), transparent);
     transform: translateY(100%);
     transition: transform 0.3s ease;
 }
@@ -493,7 +534,7 @@ section {
     font-size: 0.8rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--black);
     margin-bottom: 5px;
 }
 
@@ -513,14 +554,15 @@ section {
 }
 
 .map-container {
-    background: var(--gray);
-    border: 1px solid rgba(201, 169, 98, 0.2);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
 
 .map-placeholder {
@@ -536,18 +578,18 @@ section {
 
 /* WhatsApp CTA Section */
 .whatsapp-cta {
-    background: linear-gradient(135deg, var(--gray), var(--dark));
+    background: linear-gradient(135deg, #f5f5f5, #fafafa);
     text-align: center;
     padding: 80px 5%;
-    border-top: 1px solid rgba(201, 169, 98, 0.2);
-    border-bottom: 1px solid rgba(201, 169, 98, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .whatsapp-cta h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
     margin-bottom: 20px;
-    color: var(--white);
+    color: var(--black);
 }
 
 .whatsapp-cta p {
@@ -561,7 +603,7 @@ section {
     align-items: center;
     gap: 10px;
     background: #25D366;
-    color: var(--black);
+    color: #ffffff;
     padding: 18px 40px;
     font-size: 0.9rem;
     font-weight: 700;
@@ -580,10 +622,10 @@ section {
 
 /* Footer */
 footer {
-    background: var(--black);
+    background: #ffffff;
     padding: 40px 5%;
     text-align: center;
-    border-top: 1px solid rgba(201, 169, 98, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .footer-logo {
